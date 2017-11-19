@@ -146,7 +146,7 @@ int main(int argc, char **argv)
 			fflush(stderr);
 			exit(0);
 		}
-
+		
 		/* Evaluate the command line */
 		eval(cmdline);
 		fflush(stdout);
@@ -205,6 +205,10 @@ int builtin_cmd(char **argv)
 	char *cmd = argv[0];
 	if(!strcmp(cmd, "quit")){
 		exit(0);
+	}
+	if(!strcmp(cmd,"jobs")){
+		listjobs(jobs,STDOUT_FILENO);
+		return 1;
 	}
 	return 0;
 }
